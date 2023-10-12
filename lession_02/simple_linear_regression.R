@@ -28,7 +28,7 @@ ggplot() +
   xlab('Years Experience') +
   ylab('Salary')
 
-ggplot() + 
+ggplot() +
   geom_point(aes(x = test_set$YearsExperience, y = test_set$Salary),
              colour = 'red') +
   geom_line(aes(x = training_set$YearsExperience, y = predict(regressor, newdata = training_set)),
