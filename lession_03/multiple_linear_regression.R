@@ -1,7 +1,8 @@
 # Multiple linear regression
 
 # importing dataset
-dataset <- read.csv('C:/Users/gt3ix/PycharmProjects/pythonProject/lession_03/data/50_Startups.csv')
+# dataset <- read.csv('C:/Users/gt3ix/PycharmProjects/pythonProject/lession_03/data/50_Startups.csv')
+dataset <- read.csv('C:/Users/admin/Documents/GitHub/Machine-Learning-course/lession_03/data/50_Startups.csv')
 
 # Encoding categorical data
 dataset$State <- factor(dataset$State,
@@ -20,4 +21,17 @@ regressor <- lm(formula = Profit ~ .,
                 data = training_set)
 
 # Predict the results
-y_pred = predict(regressor, newdata = test_set)
+y_pred <- predict(regressor, newdata = test_set)
+
+# Build the optional model using backward elimination
+regressor <- lm(formula = Profit ~ R.D.Spend + Administration + Marketing.Spend + State,
+                data = dataset)
+summary(regressor)
+
+regressor <- lm(formula = Profit ~ R.D.Spend + Administration + Marketing.Spend,
+                data = dataset)
+summary(regressor)
+
+regressor <- lm(formula = Profit ~ R.D.Spend + Marketing.Spend,
+                data = dataset)
+summary(regressor)
